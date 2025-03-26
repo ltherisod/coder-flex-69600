@@ -1,0 +1,17 @@
+.nav-container {
+    background-color: gray;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .a-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40%;
+  }
+  .logo {
+    width:5rem
+  }
