@@ -6,21 +6,13 @@ import { Button } from 'react-bootstrap';
 import NavbarBootstrap from './components/NavbarBootstrap';
 // import Button from './examples/Button'
 function App() {
-// const nombre = 'Laura'
-// const saludar = () => {
-//   alert('Holis')
-// }
-// const login = () =>{
-//   console.log('holaaa')
-// }
+console.log('soy App')
   return (
 <>
-{/* <Navbar/> */}
+
 <NavbarBootstrap/>
 <ItemListContainer greeting='Bienvenidos a mi App 🙌'/>
-{/* ejemplos de props */}
-{/* <Button text='Hola Coders 😊' style='button-purple'  handler={saludar}/>
-<Button text='Log in' style='button-gray'  handler={login} disabled={true}/> */}
+
 </>
   )
 }
