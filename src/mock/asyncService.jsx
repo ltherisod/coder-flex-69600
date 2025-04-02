@@ -6,7 +6,7 @@ const products = [
         description:'lorem lorem lorem',
         stock:15,
         category:'nuevos',
-        img:'../logo.png'
+        img:'../logo-shop.png'
     },
     {
         id:'02',

@@ -1,6 +1,7 @@
 import ItemCount from "./ItemCount"
 import {getProducts} from '../mock/asyncService'
 import { useEffect, useState } from "react"
+import ItemList from "./ItemList"
 const ItemListContainer = ({greeting}) => {
   const [data, setData]= useState([])
     console.log('ItemListContainer')
@@ -26,11 +27,11 @@ const ItemListContainer = ({greeting}) => {
       .then((res)=> setData(res))
       .catch((error)=> console.log(error))
     },[])
-
+    console.log(data)
     return(
         <div>
           <h1>{greeting}</h1>
-          {data.map((producto)=> <p key={producto.id}>{producto.name}</p>)}
+         <ItemList data={data}/>
         </div>
     )
 }
