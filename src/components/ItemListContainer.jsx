@@ -5,23 +5,7 @@ import ItemList from "./ItemList"
 const ItemListContainer = ({greeting}) => {
   const [data, setData]= useState([])
     console.log('ItemListContainer')
-    // const {nombrecito, apellido, mayor} =props
-
-    //Promise
-    // const getData = () => {
-    //   let error= false
-    //   return new Promise((resolve, reject)=>{
-    //     setTimeout(()=>{
-    //       if(error){
-    //         reject('No hay pizza')
-    //       }else{
-    //         resolve('Hay pizza, llega en 2 segs')
-    //       }
-    //     },2000)
-    //   })
-    // }
-    // console.log(getData())
-// console.log(getProducts(), 'sin el then')
+  
     useEffect(()=>{
       getProducts()
       .then((res)=> setData(res))

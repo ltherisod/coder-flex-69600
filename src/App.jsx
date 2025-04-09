@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar"
 import ItemListContainer from "./components/ItemListContainer"
 import { Button } from 'react-bootstrap';
 import NavbarBootstrap from './components/NavbarBootstrap';
+import ItemDetailContainer from './components/ItemDetailContainer';
+
 // import FetchCountry from './examples/FetchCountry';
 // import FetchData from './examples/FetchData';
 // import { withLogging } from './hocs/withLogging';
@@ -18,6 +20,7 @@ console.log('soy App')
 
 <NavbarBootstrap/>
 <ItemListContainer greeting='Bienvenidos a mi App 🙌'/>
+<ItemDetailContainer/>
 {/* <FetchCountry/> */}
 {/* <FetchData/> */}
 {/* <HelloConLogging/> */}

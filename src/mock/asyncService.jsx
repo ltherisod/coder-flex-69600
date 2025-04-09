@@ -39,7 +39,7 @@ const products = [
 ]
 
 //Promesa
-
+//devuelve todos los productos
 export const getProducts = () => {
     return new Promise((resolve, reject)=>{
         let error= false
@@ -50,5 +50,17 @@ export const getProducts = () => {
                 resolve(products)
             }
         },3000)
+    })
+}
+
+//devuelva 1 solo producto
+
+export const getOneProduct = (id)=>{
+    return new Promise((resolve)=>{
+        let productFound= products.find((prod)=> prod.id === id)
+        setTimeout(()=>{
+            // resolve(products[0])
+            resolve(productFound)
+        },1500)
     })
 }
