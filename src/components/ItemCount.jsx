@@ -1,8 +1,8 @@
-import React, {useState, useEffect, use} from 'react'
+import React, {useState} from 'react'
 
-const ItemCount = ({stock}) => {
-    const [count, setCount]=useState(1)
-    const [compra, setCompra] = useState(false)
+const ItemCount = ({stock, onAdd}) => {
+ const [count, setCount]=useState(1)
+    
 const add = () => {
     if(count < stock){
         setCount( count + 1 )
@@ -16,24 +16,10 @@ const substract = () => {
 }
 
 const comprar = () => {
-    setCompra(!compra)
+    onAdd(count)
 }
 
-//se va a ejeturar siempre NO ES RECOMENDABLE
-// useEffect(()=>{
-// console.log('me ejecuto siempreee')
-// })
 
-//se va a ejecutar cuando monta el componente (1 sola vez)
-useEffect(()=>{
-    console.log('me ejecuto una sola vez')
-} ,[])
-
-
-//a la escucha de un cambio en particular
-useEffect(()=> {
-    console.log('me ejecuto una sola vez y cada vez que cambie compra')
-}, [compra])
 
 
   return (
@@ -43,7 +29,8 @@ useEffect(()=> {
         <span className='btn'>{count}</span>
         <button onClick={add} className='btn btn-success'>+</button>
     </div>
-    <button className='btn btn-primary' onClick={comprar}>Agregar al carrito</button>
+    {/* <button className='btn btn-primary' onClick={comprar}>Agregar al carrito</button> */}
+    <button className='btn btn-primary' onClick={()=>onAdd(count)}>Agregar al carrito</button>
     </div>
   )
 }
