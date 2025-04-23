@@ -1,13 +1,27 @@
-import React, { useState } from 'react'
+import React, {useContext, useState} from 'react'
 import ItemCount from './ItemCount'
+// se importa el contexto
+import { CartContext } from '../context/CartContext'
+import { Link } from 'react-router-dom'
 
 const ItemDetail = ({productDetail}) => {
-   
-console.log('itemDetail')
-  const onAdd = (cantidad)=> {
-    console.log(`Agregaste ${cantidad} de productos al carrito`)
-  }
+  //Siguiendo la actividad a raja tabla de coder
+  // const[quantity, setQuantity]= useState(0)
+  //propuesta de la profe
+  const [purchase, setPurchase]=useState(false)
+ 
+  //uso el contexto con useContext y le paso el contexto a utilizar
+  const {addToCart}= useContext(CartContext)
 
+
+  const onAdd = (cantidad)=> {
+    addToCart(productDetail,cantidad)
+    //propuesta de la profe
+    setPurchase(true)
+    //Siguiendo la actividad a raja tabla de coder
+    // setQuantity(cantidad)
+  }
+// console.log(quantity)
   return (
     <div>
         <h2>Detalle de: {productDetail.name}</h2>
@@ -15,7 +29,14 @@ console.log('itemDetail')
         <p>{productDetail.description}</p>
         <p>Precio: ${productDetail.price},00</p>
         <p>Stock: {productDetail.stock}</p>
-        <ItemCount stock={productDetail.stock} onAdd={onAdd} />
+        {/* Siguiendo la actividad a raja tabla de coder */}
+       {/* {quantity > 0 
+       ? <Link className='btn btn-dark' to='/cart'>Ir al carrito</Link> 
+       : <ItemCount stock={productDetail.stock} onAdd={onAdd} />} */}
+       {purchase 
+       ? <Link className='btn btn-dark' to='/cart'>Ir al carrito</Link> 
+       : <ItemCount stock={productDetail.stock} onAdd={onAdd} />
+       }
     </div>
   )
 }
