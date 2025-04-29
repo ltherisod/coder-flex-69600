@@ -11,7 +11,7 @@ import Cart from './components/Cart';
 function App() {
 
 
-//envolvemos los componentes para que tengan acceso al contexto.
+
 
 
   return (

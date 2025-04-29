@@ -1,6 +1,6 @@
 const products = [
     {
-        id:'01',
+        // id:'01',
         name:'Random 01',
         price:1000,
         description:'lorem lorem lorem',
