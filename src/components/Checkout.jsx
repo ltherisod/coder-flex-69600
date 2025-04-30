@@ -7,7 +7,7 @@ const Checkout = () => {
     const [buyer, setBuyer]= useState({})
     const [validateEmail, setValidateEmail]= useState('')
     const [orderId, setOrderId]= useState('')
-    const {cart, clear}=useContext(CartContext)
+    const {cart, clear, cartTotal}=useContext(CartContext)
     const buyerData = (e)=> {
         setBuyer(
             {
@@ -29,7 +29,7 @@ const Checkout = () => {
             let order={
                 comprar: buyer,
                 compras:cart,
-                total:56, //llamar a la funcion de total
+                total:cartTotal(),
                 date: serverTimestamp()
             }
     

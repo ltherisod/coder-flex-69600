@@ -1,9 +1,9 @@
-import {getProducts} from '../mock/asyncService'
+// import {getProducts, products} from '../mock/asyncService'
 import { useEffect, useState } from "react"
 import ItemList from "./ItemList"
 import { useParams } from 'react-router-dom'
 import LoaderComponent from './LoaderComponent'
-import { collection, getDocs } from 'firebase/firestore'
+import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
 import { db } from '../service/firebase'
 const ItemListContainer = ({greeting}) => {
   const [data, setData]= useState([])
@@ -16,7 +16,7 @@ const ItemListContainer = ({greeting}) => {
   useEffect(()=>{
     setLoader(true)
     //conectamos con nuestra coleccion
-    const productsCollection = collection(db, "productos")
+    const productsCollection = categoryId ? query(collection(db, "productos"), where("category", "==", categoryId))  :collection(db, "productos")
     //pedir los documentos
     getDocs(productsCollection)
     .then((res)=> {
@@ -31,11 +31,15 @@ const ItemListContainer = ({greeting}) => {
     })
     .catch((error)=> console.log(error))
     .finally(()=> setLoader(false))
-  },[])
+  },[categoryId])
 
 
-
-
+//SOLO SE HACE UNA VEZ
+// const subirData = () => {
+//   console.log('Subiendo data...')
+//   const collectionToAdd = collection(db, "productos")
+//   products.map((item)=> addDoc(collectionToAdd, item))
+// }
 
 
   //PROMESA
@@ -54,8 +58,10 @@ const ItemListContainer = ({greeting}) => {
     //   .finally(()=> setLoader(false))
     // },[categoryId])
    
+
     return(
         <div>
+          {/* <button onClick={subirData}>SUBIR DATA UNA SOLA VEZ</button> */}
           {
             loader ? <LoaderComponent/>
             :<div>

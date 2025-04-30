@@ -16,8 +16,16 @@ const addToCart = (item,cantidad)=> {
 
     if(isInCart(item.id)){
         //hacer la logica de sumar cantidades
-        //sumar cantidades
-        console.log('ya existe en el carrito')
+        const updatedCart = cart.map((prod)=>{
+            if(prod.id === item.id){
+                //sumar cantidades
+                return {...prod, quantity: prod.quantity + cantidad}
+            }else{
+                return prod
+            }
+        })
+        //actualizar el estado con el nuevo array
+        setCart(updatedCart)
     }else{
 
         //sumar un nuevo item al carrito
@@ -43,13 +51,18 @@ const isInCart = (id) => {
 
 
 //funcion total de productos(cartWidget)
-
+    const cartQuantity = () => {
+        return cart.reduce((acc, prod)=> acc+= prod.quantity,0)
+    }
 
 //funcion de total a pagar(cartView//checkout)
+const cartTotal = () => {
+    return cart.reduce((acc, prod)=> acc += prod.price * prod.quantity, 0)
+}
 
 
     return(
-        <CartContext.Provider value={{cart, addToCart, clear, removeItem}}>
+        <CartContext.Provider value={{cart, addToCart, clear, removeItem, cartTotal, cartQuantity}}>
             {children}
         </CartContext.Provider>
     )
