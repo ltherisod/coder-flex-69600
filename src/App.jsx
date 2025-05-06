@@ -7,7 +7,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 //importamos al proveedor
 import { CartProvider } from './context/CartContext';
 import Cart from './components/Cart';
-import Checkout from './components/Checkout';
+// import Checkout from './components/Checkout';
+import ReactHookForm from './components/ReactHookForm';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
   <Route path='/category/:categoryId' element={<ItemListContainer greeting='Estas en la categoria:'/>}/>
   <Route path='/item/:itemId' element={<ItemDetailContainer/>}/>
   <Route path='/cart' element={<Cart/>}/>
-  <Route path='/checkout' element={<Checkout/>}/>
+  <Route path='/checkout' element={<ReactHookForm/>}/>
 </Routes>
 </CartProvider>
 

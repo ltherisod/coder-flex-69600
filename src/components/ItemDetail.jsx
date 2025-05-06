@@ -3,25 +3,27 @@ import ItemCount from './ItemCount'
 // se importa el contexto
 import { CartContext } from '../context/CartContext'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 const ItemDetail = ({productDetail}) => {
-  //Siguiendo la actividad a raja tabla de coder
-  // const[quantity, setQuantity]= useState(0)
-  //propuesta de la profe
   const [purchase, setPurchase]=useState(false)
- 
-  //uso el contexto con useContext y le paso el contexto a utilizar
   const {addToCart}= useContext(CartContext)
 
 
   const onAdd = (cantidad)=> {
     addToCart(productDetail,cantidad)
-    //propuesta de la profe
     setPurchase(true)
-    //Siguiendo la actividad a raja tabla de coder
-    // setQuantity(cantidad)
+    Swal.fire({
+      position:'top-end',
+      icon:'success',
+      title:`Agregaste ${productDetail.name} al carrito`,
+      showCancelButton:false,
+      showConfirmButton:false,
+      timer:1000
+    })
+    
   }
-// console.log(quantity)
+
   return (
     <div>
         <h2>Detalle de: {productDetail.name}</h2>
