@@ -7,7 +7,7 @@ import Swal from 'sweetalert2'
 
 const ItemDetail = ({productDetail}) => {
   const [purchase, setPurchase]=useState(false)
-  const {addToCart}= useContext(CartContext)
+  const {addToCart, itemQuantity}= useContext(CartContext)
 
 
   const onAdd = (cantidad)=> {
@@ -23,21 +23,21 @@ const ItemDetail = ({productDetail}) => {
     })
     
   }
-
+const stockActualizado = productDetail.stock - itemQuantity(productDetail.id)
   return (
     <div>
         <h2>Detalle de: {productDetail.name}</h2>
         <img src={productDetail.img} alt={productDetail.name}/>
         <p>{productDetail.description}</p>
         <p>Precio: ${productDetail.price},00</p>
-        <p>Stock: {productDetail.stock}</p>
+        <p>Stock Disponible: {stockActualizado}</p>
         {/* Siguiendo la actividad a raja tabla de coder */}
        {/* {quantity > 0 
        ? <Link className='btn btn-dark' to='/cart'>Ir al carrito</Link> 
        : <ItemCount stock={productDetail.stock} onAdd={onAdd} />} */}
        {purchase 
        ? <Link className='btn btn-dark' to='/cart'>Ir al carrito</Link> 
-       : <ItemCount stock={productDetail.stock} onAdd={onAdd} />
+       : <ItemCount stock={stockActualizado} onAdd={onAdd} />
        }
     </div>
   )

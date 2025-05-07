@@ -23,7 +23,10 @@ const comprar = () => {
 
 
   return (
-    <div>
+   <div>
+    {
+        stock === 0 ? <p>Lo sentimos no hay stock disponible 😭</p>
+        : <div>
         <div>
         <button className='btn btn-danger' onClick={substract}>-</button>
         <span className='btn'>{count}</span>
@@ -32,6 +35,8 @@ const comprar = () => {
     {/* <button className='btn btn-primary' onClick={comprar}>Agregar al carrito</button> */}
     <button className='btn btn-primary' onClick={()=>onAdd(count)}>Agregar al carrito</button>
     </div>
+    }
+   </div>
   )
 }
 
